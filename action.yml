@@ -13,7 +13,7 @@ inputs:
   tool_version:
     description: ""
     required: false
-    default: "latest"
+    default: "latest-allowed"
   github_token:
     description: "API token for GitHub to increase the rate limit."
     default: ""
