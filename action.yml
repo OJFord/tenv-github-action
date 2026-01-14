@@ -13,7 +13,6 @@ inputs:
   tool_version:
     description: ""
     required: false
-    default: "latest-allowed"
   github_token:
     description: "API token for GitHub to increase the rate limit."
     default: ""
@@ -39,4 +38,9 @@ runs:
         tenv_wrapper: "false"
 
     - run: "tenv ${{inputs.tool_name}} install ${{inputs.tool_version}}"
+      if: ${{inputs.tool_version != ''}}
+      shell: "bash"
+
+    - run: "tenv ${{inputs.tool_name}} detect --install"
+      if: ${{inputs.tool_version == ''}}
       shell: "bash"
